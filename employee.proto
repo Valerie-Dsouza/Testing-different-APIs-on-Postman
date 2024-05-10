@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package employees;
+
+service EmployeeService {
+    rpc CreateEmployee(CreateUpdateEmployeeRequest) returns (CreateUpdateEmployeeRequest) {}
+    rpc GetEmployee(GetDeleteEmployeeRequest) returns (CreateUpdateEmployeeRequest) {}
+    rpc DeleteEmployee(GetDeleteEmployeeRequest) returns (DeleteEmployeeResponse) {}
+    rpc UpdateEmployee(CreateUpdateEmployeeRequest) returns (CreateUpdateEmployeeRequest) {}
+    rpc SelectAllEmployee(SelectColumnsRequest) returns (SelectAllEmployeeResponse) {}
+    rpc SelectSalaryByRange(SelectSalaryByRangeRequest) returns (SelectAllEmployeeResponse) {}
+    rpc GetRedisData(GetRedisRequest) returns (GetRedisResponse) {}
+    rpc GetForm(GetFormRequest) returns (SelectAllEmployeeResponse) {}
+
+}
+    
+
+
+message CreateUpdateEmployeeRequest {
+    int32 empid = 1;
+    string fullname = 2;
+    float salary = 3;
+    string designation = 4;
+    int32 desid =5;
+}
+
+message GetDeleteEmployeeRequest {
+    int32 empid = 1;
+}
+
+
+message DeleteEmployeeResponse {
+    bool success = 1;
+}
+
+
+message SelectColumnsRequest {
+    repeated string columns = 1;
+}
+
+message SelectAllEmployeeResponse {
+    repeated CreateUpdateEmployeeRequest employees = 1;
+}
+
+message SelectSalaryByRangeRequest {
+    float min = 1;
+    float max = 2;
+}
+
+
+message GetRedisRequest{
+    string key=1;
+}    
+
+message GetRedisResponse{
+    string data=1;
+}  
+
+message GetFormRequest{
+    bytes content=1;
+}
+
+message FormResponse{
+    bytes content=1;
+}
+
+

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package designations;
+
+service DesignationService{
+    rpc CreateDesignation(CreateDesignationRequest) returns (CreateDesignationRequest) {}
+    rpc GetDesignation(GetDesignationRequest) returns (CreateDesignationRequest) {}
+
+}
+
+message CreateDesignationRequest{
+    int32 desid = 1;
+    string designation = 2;
+}
+
+message GetDesignationRequest {
+    int32 desid = 1;
+}
+

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package webs;
+
+service WebService {
+    rpc WebApp(WebAppRequest) returns (WebAppRequest) {}
+}
+
+message WebAppRequest{
+    string user=1;
+    string message=2;
+}
+
